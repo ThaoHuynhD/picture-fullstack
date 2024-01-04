@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model picture {
+  img_id               Int       @id @default(autoincrement())
+  img_name             String?   @db.VarChar(255)
+  img_path             String?   @db.VarChar(255)
+  img_description      String?   @db.Text
+  img_capture_time     DateTime? @db.DateTime(0)
+  img_capture_location String?   @db.VarChar(255)
+  img_upload_date      DateTime? @default(now()) @db.Timestamp(0)
+}
